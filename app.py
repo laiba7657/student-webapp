@@ -10,7 +10,7 @@ def init_db():
                  (id INTEGER PRIMARY KEY, name TEXT, grade TEXT)''')
     conn.commit()
     conn.close()
-
+# test webhook
 @app.route('/')
 def home():
     return "<h1>Student Portal</h1><p>Welcome!</p>"
