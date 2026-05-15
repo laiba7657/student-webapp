@@ -27,16 +27,18 @@ pipeline {
 
         // ─────────────────────────────────────────────
         stage('Unit Testing') {
-        // ─────────────────────────────────────────────
-            steps {
-                echo '🧪 Stage 2: Running unit tests...'
-                sh '''
-                    pip3 install flask==2.3.0 pytest==7.4.0 werkzeug==2.3.0 --quiet --break-system-packages
-                    python3 -m pytest test_app.py -v --tb=short
-                    echo "✅ Unit tests passed!"
-                '''
-            }
-        }
+    steps {
+        echo '🧪 Stage 2: Running unit tests...'
+        sh '''
+            docker run --rm \
+                -v $(pwd):/app \
+                -w /app \
+                python:3.11-slim \
+                bash -c "pip install flask==2.3.0 pytest==7.4.0 --quiet && python3 -m pytest test_app.py -v --tb=short"
+            echo "✅ Unit tests passed!"
+        '''
+    }
+}
 
         // ─────────────────────────────────────────────
         stage('Containerized Deployment') {
