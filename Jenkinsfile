@@ -16,7 +16,7 @@ pipeline {
                 echo '📦 Stage 1: Building application...'
                 sh '''
                     # Install Python deps for unit testing later
-                    pip3 install flask==2.3.0 pytest==7.4.0 --quiet
+                    pip3 install flask==2.3.0 pytest==7.4.0 --quiet --break-system-packages
 
                     # Build the Docker image for the web app
                     docker build -t ${APP_IMAGE} -f Dockerfile .
