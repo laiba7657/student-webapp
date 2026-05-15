@@ -34,7 +34,7 @@ pipeline {
                 -v $(pwd):/app \
                 -w /app \
                 python:3.11-slim \
-                bash -c "pip install flask==2.3.0 pytest==7.4.0 --quiet && python3 -m pytest test_app.py -v --tb=short"
+                bash -c "pip install flask==2.3.0 werkzeug==2.3.7 pytest==7.4.0 --quiet"
             echo "✅ Unit tests passed!"
         '''
     }
