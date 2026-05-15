@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /tests
 
 COPY requirements.txt .
-RUN pip install --no-cache-dir flask>=3.0.0
+RUN pip install --no-cache-dir flask selenium pytest
 
 COPY selenium_tests/ .
 
